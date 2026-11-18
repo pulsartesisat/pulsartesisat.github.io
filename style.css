@@ -105,6 +105,7 @@ header {
 
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 24px;
 }
 
@@ -135,6 +136,71 @@ header {
 
 .nav-links a:hover::after {
   width: 100%;
+}
+
+/* Masaüstü Açılır Hizmetler Menüsü (Dropdown) */
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  color: var(--navy);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.94rem;
+  cursor: pointer;
+  padding: 4px 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s ease;
+}
+
+.dropdown-toggle:hover {
+  color: var(--teal);
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 250px;
+  background: var(--white);
+  border: 1px solid var(--border-subtle);
+  border-top: 3px solid var(--teal);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  padding: 8px 0;
+  z-index: 200;
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown.open .dropdown-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-menu a {
+  padding: 10px 18px;
+  font-size: 0.9rem;
+  color: var(--navy);
+  border-bottom: 1px solid var(--bg-light);
+}
+
+.dropdown-menu a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu a::after {
+  display: none;
+}
+
+.dropdown-menu a:hover {
+  background: var(--teal-light);
+  color: var(--teal-dark);
 }
 
 .header-actions {
@@ -185,6 +251,21 @@ header {
   transform: translateY(-1px);
 }
 
+/* Mobil Hamburger Butonu */
+.mobile-menu-btn {
+  display: none;
+  background: var(--bg-light);
+  color: var(--navy);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
 /* Giriş (Hero) Alanı */
 .hero {
   background: radial-gradient(circle at 85% 15%, rgba(0, 153, 168, 0.28) 0%, transparent 45%), radial-gradient(circle at top right, #00387a 0%, var(--navy) 50%, var(--navy-dark) 100%);
@@ -678,7 +759,6 @@ header {
   font-size: 0.92rem;
   color: #e2e8f0;
 }
-
 /* Mahalleler & SSS */
 .info-grid {
   display: grid;
@@ -1019,8 +1099,44 @@ footer strong {
   body {
     padding-bottom: 76px;
   }
+  .mobile-menu-btn {
+    display: inline-flex;
+  }
   .nav-links {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 10px 20px 18px;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 3px solid var(--teal);
+    box-shadow: var(--shadow-md);
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .nav-links > a,
+  .dropdown-toggle {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    width: 100%;
+    text-align: left;
+    justify-content: space-between;
+  }
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border: none;
+    border-left: 3px solid var(--teal);
+    border-radius: 0;
+    background: var(--bg-light);
+    padding: 4px 0 4px 12px;
+    margin-top: 4px;
   }
   .hero {
     padding: 44px 18px 56px;
@@ -1049,6 +1165,7 @@ footer strong {
     padding: 24px 20px;
   }
 }
+
 .agency-signature {
   margin-top: 16px;
   padding-top: 14px;
@@ -1077,4 +1194,81 @@ footer strong {
 
 .service-body .local-seo-note {
   margin-bottom: 16px;
+}
+/* KVKK Çerez Onay Kutusu */
+.cookie-banner {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  max-width: 680px;
+  margin: 0 auto;
+  background: rgba(0, 21, 48, 0.97);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--white);
+  padding: 16px 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  z-index: 998;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.cookie-banner[hidden] {
+  display: none;
+}
+
+.cookie-text strong {
+  color: #7dd3fc;
+}
+
+.cookie-actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.cookie-btn {
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+/* KVKK gereği Kabul ve Reddet butonları eşit görünürlükte */
+.cookie-btn-accept,
+.cookie-btn-reject {
+  background: var(--teal);
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.cookie-btn-accept:hover,
+.cookie-btn-reject:hover {
+  background: var(--teal-dark);
+}
+
+@media (max-width: 900px) {
+  .cookie-banner {
+    bottom: 84px; /* Mobil sabit arama barının tam üstünde durur */
+    left: 12px;
+    right: 12px;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px 16px;
+  }
+  .cookie-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }

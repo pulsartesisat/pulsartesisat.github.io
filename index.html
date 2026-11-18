@@ -1,6 +1,48 @@
 <!doctype html>
 <html lang="tr">
   <head>
+    <!-- KVKK & Google Consent Mode Varsayılan Ayarı -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      const savedConsent = localStorage.getItem("pulsar_cookie_consent");
+      gtag("consent", "default", {
+        analytics_storage: savedConsent === "granted" ? "granted" : "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+      });
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://googletagmanager.com/gtm.js?id=GTM-5T6CG87S"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+    </script>
+
+    <!-- Telefon, WhatsApp ve Harita Tıklama Takibi -->
+    <script>
+      document.addEventListener("click", function (e) {
+        const link = e.target.closest("a");
+        if (!link) return;
+        const href = link.getAttribute("href") || "";
+
+        if (href.startsWith("tel:")) {
+          gtag("event", "telefon_aramasi", { event_category: "iletisim", event_label: "0554 122 38 38" });
+        } else if (href.includes("wa.me") || href.includes("whatsapp")) {
+          gtag("event", "whatsapp_tiklama", { event_category: "iletisim", event_label: "WhatsApp Mesaj" });
+        } else if (href.includes("/maps") || href.includes("maps.") || href.includes("share.google")) {
+          gtag("event", "harita_yol_tarifi", { event_category: "konum", event_label: "Google Haritalar" });
+        }
+      });
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pulsar Tesisat | Esenyurt, Beylikdüzü, Avcılar 7/24 Acil Sıhhi Tesisat, Su Kaçağı & Doğalgaz</title>
@@ -172,8 +214,17 @@
         <a href="index.html" class="logo-box" aria-label="Pulsar Tesisat Ana Sayfa">
           <img src="logo.webp" alt="Pulsar Tesisat - Esenyurt Beylikdüzü Avcılar Tesisatçı" width="280" height="141" fetchpriority="high" />
         </a>
-        <nav class="nav-links" aria-label="Ana Menü">
-          <a href="#hizmetler">Hizmetlerimiz</a>
+        <nav class="nav-links" id="navLinks" aria-label="Ana Menü">
+          <div class="nav-dropdown">
+            <button type="button" class="dropdown-toggle" aria-expanded="false">Hizmetlerimiz ▾</button>
+            <div class="dropdown-menu">
+              <a href="#hizmetler">Tüm Hizmetler (Özet)</a>
+              <a href="su-kacagi-tespiti.html">Kırmadan Su Kaçağı Tespiti</a>
+              <a href="tikaniklik-acma.html">Robotla Tıkanıklık Açma</a>
+              <a href="petek-temizligi.html">Makineli Kombi Petek Temizliği</a>
+              <a href="dogalgaz-kombi-servisi.html">Doğalgaz Tesisatı & Kombi Servisi</a>
+            </div>
+          </div>
           <a href="#tum-hizmetler">Tüm İşler</a>
           <a href="#nasil-calisiyoruz">Nasıl Çalışıyoruz?</a>
           <a href="#bolgeler">Bölgeler</a>
@@ -195,6 +246,7 @@
             </svg>
             <span>0554 122 38 38</span>
           </a>
+          <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menüyü Aç veya Kapat" aria-expanded="false">☰</button>
         </div>
       </div>
     </header>
