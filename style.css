@@ -1070,3 +1070,11 @@ footer strong {
   color: var(--orange);
   text-decoration: underline;
 }
+
+.catalog-title {
+  margin-bottom: 28px;
+}
+
+.service-body .local-seo-note {
+  margin-bottom: 16px;
+}
