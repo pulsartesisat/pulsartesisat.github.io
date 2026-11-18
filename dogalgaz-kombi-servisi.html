@@ -16,32 +16,46 @@
       });
     </script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://googletagmanager.com/gtm.js?id=GTM-5T6CG87S"></script>
+    <!-- KVKK & 100/100 PageSpeed Google Analytics (G-2M4X80LP5Z) -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
-      gtag("js", new Date());
-    </script>
+      (function () {
+        var consentState = "denied";
+        try {
+          if (localStorage.getItem("pulsar_cookie_consent") === "granted") {
+            consentState = "granted";
+          }
+        } catch (e) {}
 
-    <!-- Telefon, WhatsApp ve Harita Tıklama Takibi -->
-    <script>
-      document.addEventListener("click", function (e) {
-        const link = e.target.closest("a");
-        if (!link) return;
-        const href = link.getAttribute("href") || "";
+        gtag("consent", "default", {
+          analytics_storage: consentState,
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+        });
+        gtag("js", new Date());
+        gtag("config", "G-2M4X80LP5Z");
 
-        if (href.startsWith("tel:")) {
-          gtag("event", "telefon_aramasi", { event_category: "iletisim", event_label: "0554 122 38 38" });
-        } else if (href.includes("wa.me") || href.includes("whatsapp")) {
-          gtag("event", "whatsapp_tiklama", { event_category: "iletisim", event_label: "WhatsApp Mesaj" });
-        } else if (href.includes("/maps") || href.includes("maps.") || href.includes("share.google")) {
-          gtag("event", "harita_yol_tarifi", { event_category: "konum", event_label: "Google Haritalar" });
+        var gaLoaded = false;
+        function loadGA() {
+          if (gaLoaded) return;
+          gaLoaded = true;
+          var s = document.createElement("script");
+          s.async = true;
+          s.src = "https://googletagmanager.com" + "/gtag/js?id=G-2M4X80LP5Z";
+          document.head.appendChild(s);
         }
-      });
+
+        ["scroll", "mousemove", "touchstart", "click", "keydown"].forEach(function (evt) {
+          window.addEventListener(evt, loadGA, { once: true, passive: true });
+        });
+        setTimeout(loadGA, 3500);
+      })();
     </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Esenyurt, Beylikdüzü ve Avcılar Doğalgaz Tesisatı & Kombi Servisi | Pulsar Tesisat</title>
