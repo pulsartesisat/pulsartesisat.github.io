@@ -1,21 +1,6 @@
 <!doctype html>
 <html lang="tr">
   <head>
-    <!-- KVKK & Google Consent Mode Varsayılan Ayarı -->
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      const savedConsent = localStorage.getItem("pulsar_cookie_consent");
-      gtag("consent", "default", {
-        analytics_storage: savedConsent === "granted" ? "granted" : "denied",
-        ad_storage: "denied",
-        ad_user_data: "denied",
-        ad_personalization: "denied",
-      });
-    </script>
-
     <!-- KVKK & 100/100 PageSpeed Google Analytics (G-2M4X80LP5Z) -->
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -96,7 +81,11 @@
         "@context": "https://schema.org",
         "@type": "Plumber",
         "@id": "https://pulsartesisat.com/#plumber",
-        "name": "Pulsar Tesisat - Özgür Polat",
+        "name": "Pulsar Tesisat",
+        "founder": {
+          "@type": "Person",
+          "name": "Özgür Polat"
+        },
         "url": "https://pulsartesisat.com/",
         "logo": {
           "@type": "ImageObject",
@@ -173,8 +162,7 @@
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Kombi Servisi, Tamiri, Bakımı ve Su Akıtma Onarımı" } },
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Makineli ve İlaçlı Petek Temizleme / Radyatör Temizliği" } },
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Isınmayan Petek Tamiri" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Banyo ve Duş Tadilatı" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Su Yalıtımı ve Su Hasarı Giderme Hizmeti" } }
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Banyo ve Duş Tadilatı" } }
           ]
         },
         "openingHoursSpecification": {
@@ -378,7 +366,7 @@
             </div>
             <div class="service-body">
               <h3>Kırmadan Su Kaçağı Bulma</h3>
-              <p>Akustik dinleme cihazı, kameralı ve termal kameralı tesisat kontrolü ile banyo su kaçağı, sızıntı ve patlakları kırmadan noktasal tespit edip su hasarı giderme ve su yalıtımı desteğiyle onarıyoruz.</p>
+              <p>Akustik dinleme cihazı, kameralı ve termal kameralı tesisat kontrolü ile banyo su kaçağı, sızıntı ve patlakları kırmadan noktasal tespit edip garantili olarak onarıyoruz.</p>
               <a href="su-kacagi-tespiti.html" class="service-link">Su Kaçağı Tespiti Detayları →</a>
             </div>
           </article>
@@ -431,7 +419,6 @@
                 <li>Tuvalet ve klozet montajı / tamiri</li>
                 <li>Su ısıtıcısı montajı ve tamiri</li>
                 <li>Su deposu montajı ve tamiri</li>
-                <li>Su yalıtımı ve su hasarı giderme hizmeti</li>
               </ul>
             </div>
 
